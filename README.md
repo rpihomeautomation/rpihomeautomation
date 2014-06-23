@@ -1,5 +1,5 @@
-miniproject
-===========
+rpihomeautomation
+=================
 
 Raspberry Pi home automation
 
