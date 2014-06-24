@@ -2,12 +2,12 @@
 Automatic Water Control System
 ========= ===== ======= ======
 rev v.1
-#test proram for water pump system
+#test program for water pump system
 #turns on the pump when the input is high
 #connects the input from the sensor to   pin
 #output from   pin
 #the output is connected to the relay drivring circuit
-#the input value is send serially for monitoring
+#the input value is sent serially for monitoring
 */
 
 //pc-pumpcontrol
