@@ -20,10 +20,10 @@ int pcsensor,pcstate;
 void setup()
 {
   Serial.begin(9600);
-  pinMode(pcinput,INPUT);  // DEEPAK, WHY ARE YOU USING AN ANALOG PIN FOR DIGITAL INPUT??? WUT BOUT THE OTHER DIGITAL PINS??
+  pinMode(pcinput,INPUT);
   pinMode(pcoutput,OUTPUT);
   pcsensor = digitalRead(pcinput); // why this line here? 
-  pcstate = pcinput;    // is this correct??  pcinput is just a pin num isnt it??
+  pcstate = pcinput;    // shouldnt this be pcstate=digitalRead(pcinput); ??... or pcsensor... 
 }
 
 void loop()
