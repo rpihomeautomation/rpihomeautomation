@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {0.1}INTRODUCTION}{2}
+\contentsline {section}{\numberline {0.2}BLOCK DIAGRAM}{3}
+\contentsline {section}{\numberline {0.3}WORKING}{5}
+\contentsline {section}{\numberline {0.4}MAIN COMPONENTS REQUIRED}{6}
+\contentsline {section}{\numberline {0.5}APPLICATIONS}{7}
+\contentsline {section}{\numberline {0.6}DRAWBACKS}{7}

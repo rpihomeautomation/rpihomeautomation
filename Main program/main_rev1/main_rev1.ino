@@ -15,70 +15,95 @@ pc-pumpcontrol
 temperature mesuring system
 tm-temperature measurement
 
-preprosessor definitions:
-al
+
+INPUTS: alinput - A0
+        aloverride - 2
+        altoggle 3
+        
+        elinput - A1
+        eloverride - 4
+        eltoggle - 5
+        
+        pcinput - A2
+        pcoverride - 6
+        pctoggle - 7
+        
+        tminput - A3
+        
+OUTPUTS:aloutput - 9
+        eloutput - 10
+        pcoutput - 11
 */
 
 
+//preprosessor definitions
 #define alinput A0
 #define aloutput 9
 #define aloverride 2
 #define altoggle 3
 
-//el
 #define elinput A1
 #define eloutput 10
 #define treshold 500
 #define eloverride 4
 #define eltoggle 5
 
-//pc
 #define pcinput A2
 #define pcoutput 11
 #define pcoverride 6
 #define pctoggle 7
 
-//tm
 #define tminput A3
 
-//variable defenitions:
-//al
+//variable defenitions
 float alsensor,alvoltage; 
 int albrightness;
 
-//el
 int elsensor,elstate;
 
-//pc
 int pcsensor,pcstate;
 
-//tm
 float tm,tmvoltage;
 
+//functions
+void adaptive_internal_lighting_system(); //adaptive internal lighting system function
+void external_lighting_system(); //external lighting system function
+void pump_control_system(); //automatic pump control system function
+void temperature_measurement(); //temperature measurement function
+  
 
-//setup function:
+//setup function
 void setup() 
 {
   Serial.begin(9600);
-  //al
+  
   pinMode(aloverride,INPUT);
   pinMode(altoggle,INPUT);
-  //el
+  
   pinMode(eloutput,OUTPUT);
   pinMode(eloverride,INPUT);
   pinMode(eltoggle,INPUT);
   elstate=0;
-  //pc
+  
   pinMode(pcinput,INPUT);
   pinMode(pcoutput,OUTPUT);
   pcsensor = digitalRead(pcinput);
   pcstate = pcinput;
-  
 }
 
-//loop function:
+
+//loop function
 void loop() 
-{ //al
+{ adaptive_internal_lighting_system(); //call the adaptive internal lighting system function
+  external_lighting_system(); //call the external lighting system function
+  pump_control_system(); //call the automatic pump control system function
+  temperature_measurement();//call the temperature measurement function
+  delay(500);
+}
+
+//adaptive internal lighting system function
+void adaptive_internal_lighting_system()
+{
   if(!digitalRead(aloverride))
   { alsensor = analogRead(alinput); //read the sensor value
     albrightness = alsensor / 4; //convert the value from 10-bit resolution to 8-bit res
@@ -93,9 +118,12 @@ void loop()
     else //toggle - OFF
      analogWrite(aloutput,0);
   }
-  delay(500);
-  
-  //el
+  return;
+}
+
+//external lighting system function
+void external_lighting_system()
+{
   if(!digitalRead(eloverride))
   { elsensor=analogRead(elinput);
     if((elsensor>treshold) && (elstate==0))
@@ -110,7 +138,7 @@ void loop()
     }
   }
   else //override function
-  { if(digitalRead(eltoggle));
+  { if(digitalRead(eltoggle))
     { digitalWrite(eloutput,HIGH);
       Serial.println("External light is ON-toggle");
     }
@@ -119,8 +147,12 @@ void loop()
       Serial.println("External light is OFF-toggle");
     }
   }
-    
-  //pc
+  return;
+}
+
+//pump control system
+void pump_control_system()
+{
   if(!digitalRead(pcoverride))
   { pcsensor = digitalRead(pcinput);
     if(pcsensor!=pcstate)
@@ -151,12 +183,17 @@ void loop()
       }
     }
   }
-  
-  
-  //tm
+  return;
+}
+
+//temperature measurement system
+void temperature_measurement()
+{
   tm=analogRead(tminput);//read the temperature value
   tmvoltage = tm * (5 / 1024);
   Serial.print("The temperature is ");//diplay the temperature
   Serial.println(tmvoltage);
-  delay(500);
+  Serial.print("The ADC value is: "); //display the ADC value
+  Serial.println(tminput);
+  return;
 }

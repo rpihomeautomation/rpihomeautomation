@@ -1,0 +1,20 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}INTRODUCTION}{2}
+\contentsline {section}{\numberline {1.1}Features of the project}{3}
+\contentsline {subsection}{\numberline {1.1.1}Adaptive Internal Lighting System}{4}
+\contentsline {subsection}{\numberline {1.1.2}Temperature Monitoring}{4}
+\contentsline {subsection}{\numberline {1.1.3}Automatic External Lighting}{4}
+\contentsline {subsection}{\numberline {1.1.4}Automatic Water Pumping System}{4}
+\contentsline {subsection}{\numberline {1.1.5}Password Enabled Door Lock system}{5}
+\contentsline {subsection}{\numberline {1.1.6}Interactive Music Player}{5}
+\contentsline {subsection}{\numberline {1.1.7}Holistic Data Logging}{5}
+\contentsline {section}{\numberline {1.2}Block diagram}{6}
+\contentsline {section}{\numberline {1.3}Hardware Used}{6}
+\contentsline {subsection}{\numberline {1.3.1}Raspberry Pi}{6}
+\contentsline {subsection}{\numberline {1.3.2}LM35 Temperature Sensor}{7}
+\contentsline {subsection}{\numberline {1.3.3}DS1307 (Real Time Clock)}{7}
+\contentsline {subsection}{\numberline {1.3.4}Interface Protocols}{7}
+\contentsline {chapter}{\numberline {2}Feasibility Survey}{8}
+\contentsline {section}{\numberline {2.1}Availability of Components}{8}
+\contentsline {section}{\numberline {2.2}Proposed Bill Of Materials}{8}
+\contentsline {chapter}{\numberline {3}Bibliography/References:}{9}

@@ -1,0 +1,7 @@
+\contentsline {chapter}{\numberline {1}\uppercase {INITIAL REPORT}}{1}
+\contentsline {section}{\numberline {1.1}BLOCK DIAGRAM DESCRIPTION}{1}
+\contentsline {section}{\numberline {1.2}CIRCUIT DIAGRAM}{1}
+\contentsline {section}{\numberline {1.3}CIRCUIT WORKING}{1}
+\contentsline {chapter}{\numberline {2}\uppercase {MECHANICAL STRUCTURE}}{3}
+\contentsline {section}{\numberline {2.1}REFERENCES}{3}
+\contentsline {section}{\numberline {2.2}FEASIBILITY REPORT}{4}
