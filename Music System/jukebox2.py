@@ -24,60 +24,64 @@
 
 
 
-import glob, random, sys, vlc  #glob-load the mp3 files names
+try:
+    import glob, random, sys, vlc, time  #glob-load the mp3 files names
                                #random-shuffle the tracks
                                #sys-for exit()
                                #vlc-music player
-import RPi.GPIO as GPIO
+    import RPi.GPIO as GPIO
 
-if len(sys.argv) <= 1:  #to exit if no input folder is present
-	print("Please specify a folder with mp3 files")
-	sys.exit(1)
+    if len(sys.argv) <= 1:  #to exit if no input folder is present
+	   print("Please specify a folder with mp3 files")
+	   sys.exit(1)
 	
-folder = sys.argv[1]
-files = glob.glob(folder+"/*.mp3")
-if len(files) == 0:  #checks for mp3 file are present or not
-	print("No mp3 files in directory", folder, "..exiting")
-	sys.exit(1)
+    folder = sys.argv[1]
+    files = glob.glob(folder+"/*.mp3")
+    if len(files) == 0:  #checks for mp3 file are present or not
+	   print("No mp3 files in directory", folder, "..exiting")
+	   sys.exit(1)
 
-random.shuffle(files)
+    random.shuffle(files)
 
-player = vlc.MediaPlayer()
- medialist = vlc.MediaList(files) #medialist-playlist player
-mlplayer = vlc.MediaListPlayer()
-mlplayer.set_media_player(player)
-mlplayer.set_media_list(medialist)
+    player = vlc.MediaPlayer()
+    medialist = vlc.MediaList(files) #medialist-playlist player
+    mlplayer = vlc.MediaListPlayer()
+    mlplayer.set_media_player(player)
+    mlplayer.set_media_list(medialist)
 
-GPIO.setmode(GPIO.BCM)
-PLAY_BUTTON=11
-STOP_BUTTON=7
-BACK_BUTTON=4
-FORWARD_BUTTON=10
-GPI0.setup(PLAY_BUTTON, GPIO,IN)
-GPIO.setup(STOP_BUTTON, GPIO.IN)
-GPIO.setup(BACK_BUTTON, GPIO.IN)
-GPIO.setup(FORWARD_BUTTON, GPIO.IN)
+    GPIO.setmode(GPIO.BCM)
+    PLAY_BUTTON=11
+    STOP_BUTTON=7
+    BACK_BUTTON=4
+    FORWARD_BUTTON=10
+    GPIO.setup(PLAY_BUTTON, GPIO,IN)
+    GPIO.setup(STOP_BUTTON, GPIO.IN)
+    GPIO.setup(BACK_BUTTON, GPIO.IN)
+    GPIO.setup(FORWARD_BUTTON, GPIO.IN)
 
-while True:
+    while True:
 	#button = input("Hit a button")
-	if GPIO.input(PLAY_BUTTON):
-		print("Pressed play button")
-		if mlplayer.is_playing():
-			mlplayer.pause()
-		else:
-			mlplayer.play()
-	elif GPIO.input(STOP_BUTTON):
-		print("Pressed stop button")
-		mlplayer.stop()		
-		random.shuffle(files)
-		medialist = vlc.MediaList(files)
-		mlplayer.set_media_list(medialist)
-	elif GPIO.input(BACK_BUTTON):
-		print("Pressed back button")
-		mlplayer.previous()
-	elif GPIO.input(FORWARD_BUTTON):
-		print("Pressed forward button")
-		mlplayer.next()
-	#else:
-	#	print("Unrecognised input")
-	time.sleep(0.3)
+	   if GPIO.input(PLAY_BUTTON):
+		  print("Pressed play button")
+		  if mlplayer.is_playing():
+			 mlplayer.pause()
+		  else:
+			 mlplayer.play()
+	   elif GPIO.input(STOP_BUTTON):
+		  print("Pressed stop button")
+		  mlplayer.stop()		
+		  random.shuffle(files)
+		  medialist = vlc.MediaList(files)
+		  mlplayer.set_media_list(medialist)
+	   elif GPIO.input(BACK_BUTTON):
+		  print("Pressed back button")
+		  mlplayer.previous()
+	   elif GPIO.input(FORWARD_BUTTON):
+		  print("Pressed forward button")
+		  mlplayer.next()
+	   #else:
+	   #	print("Unrecognised input")
+	   time.sleep(0.3)
+except KeyboardInterrupt:
+    GPIO.cleanup()
+    
