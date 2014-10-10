@@ -1,0 +1,118 @@
+sleep(2)
+10-19
+Rpi - 
+
+AL: 20-29
+rpi to arduino:
+20 - status check
+A - R
+21 - Auto OFF -- Adaptive Internal Lighting system - ON - Auto Mode
+22 - Auto ON
+23 - Manual OFF
+24 - Manual ON
+25 - Room Empty
+
+
+
+EL: 30-39
+R to A
+30 - status
+A - R
+31 - Auto OFF
+32 - Auto ON
+33 - Manual OFF
+34 - Manual ON
+
+
+
+PC: 40-49
+R to A
+40 - status
+A - R
+41 - Auto OFF
+42 - Auto ON
+43 - Manual OFF
+44 - Manual ON
+45 - No water in the bottom tank
+
+DL: 50-59
+R to A
+50 - status
+A - R
+51 - Door open
+52 - Door closed
+53 - incorrect password
+54 - Password changed
+
+TM: 60-69
+R to A
+60 - req ADC value
+A to R
+61 - notify ADC is being send
+xx - ADC MSBs
+xx - ADC LSBs
+
+
+
+
+INITIAL states
+AL - 21
+EL - 31
+PC - 41
+DL - 51
+
+
+arduino1:
+PIR:
+i/p - A0
+
+AL
+i/p(LDR) - A1
+PWM o/p - 10
+Override i/p-12
+Toggle i/p -13
+
+EL:
+i/p(LDR) - A2
+Override i/p-5
+Toggle i/p -6
+o/p - 7
+
+TM:
+i/p - A3
+
+
+
+remaining
+A4,A5(2)
+8-13(6)
+
+
+Arduino2:
+DL
+keypad : 2-8 (Coloumn:123=678  Row:4567=2345)
+motor o/p: 9
+status LED o/p:10
+
+
+
+PC:
+bottom tank: A0
+top tank - bottom:A1
+top tank - top: A2
+override : A5
+toggle: 13
+o/p motot - A3
+o/p status LED:A4
+
+
+EEPROM.write(addr, val);
+value = EEPROM.read(address);
+
+
+EEPROMS
+arduino 1:
+al = 1
+el = 2
+dl = 0-3
+pc = 6

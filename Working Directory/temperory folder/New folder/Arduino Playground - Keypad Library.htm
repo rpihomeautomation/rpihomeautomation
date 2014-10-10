@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://playground.arduino.cc/code/Keypad -->
+<html class=" js no-touch boxshadow opacity fontface svg inlinesvg svgclippaths no-ie8compat" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script id="LR1" type="text/javascript" async="" src="./Arduino Playground - Keypad Library_files/client.js"></script><script src="./Arduino Playground - Keypad Library_files/cb=gapi.loaded_1" async=""></script><script src="./Arduino Playground - Keypad Library_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" src="./Arduino Playground - Keypad Library_files/plusone.js" gapi_processed="true"></script><script type="text/javascript" src="./Arduino Playground - Keypad Library_files/widgets.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta charset="utf-8">
+
+	<title>Arduino Playground - Keypad Library </title>
+	<link rel="shortcut icon" type="image/x-icon" href="http://playground.arduino.cc/favicon.png">
+
+	<link rel="stylesheet" href="./Arduino Playground - Keypad Library_files/fonts.css" type="text/css">
+	<link rel="stylesheet" href="http://arduino.cc/css/arduino-icons.css">
+	<link rel="stylesheet" href="http://arduino.cc/css/animation.css"><!--[if IE 7]>
+	<link rel="stylesheet" href="http://arduino.cc/css/arduino-icons-ie7.css"><![endif]-->
+	<!--[if gte IE 9]><!-->
+	<link rel="stylesheet" href="./Arduino Playground - Keypad Library_files/foundation2.css" type="text/css">
+	<!--[endif]---->
+	<!--[if IE 8]>
+		<link rel='stylesheet' href='http://arduino.cc/css/foundation_ie8.css' type='text/css' />	
+	<![endif]-->	
+	<link rel="stylesheet" href="./Arduino Playground - Keypad Library_files/arduino_code_highlight.css" type="text/css">
+	<link rel="stylesheet" type="text/css" media="screen" href="./Arduino Playground - Keypad Library_files/typeplate.css">
+	<link rel="stylesheet" href="./Arduino Playground - Keypad Library_files/arduinoWide_SSO.css" type="text/css">
+	<link rel="stylesheet" href="./Arduino Playground - Keypad Library_files/common.css" type="text/css">	  
+	<link href="https://plus.google.com/114839908922424087554" rel="publisher">
+	<script type="text/javascript" async="" src="./Arduino Playground - Keypad Library_files/ga.js"></script><script src="./Arduino Playground - Keypad Library_files/custom.modernizr.js"></script><style type="text/css"></style>
+<link rel="stylesheet" type="text/css" href="./Arduino Playground - Keypad Library_files/widget005.old.css" media="all"><link id="avast_os_ext_custom_font" href="./Arduino Playground - Keypad Library_files/css" rel="stylesheet" type="text/css"><link href="./Arduino Playground - Keypad Library_files/css(1)" rel="stylesheet" type="text/css"><style id="wrc-css" type="text/css">.wrcx {display:none} .r .wrcx,  .fc .wrcx, #rhsline ol .wrcx {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_grey.png") right no-repeat}  .osl .wrcx, .vresult .r, .tl .r .wrcx{ display: none;}
+.wrc0 {display:none} .r .wrc0,  .fc .wrc0, #rhsline ol .wrc0 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_grey.png") right no-repeat}  .osl .wrc0, .vresult .r, .tl .r .wrc0{ display: none;}
+.wrc11 {display:none} .r .wrc11,  .fc .wrc11, #rhsline ol .wrc11 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_green.png") right no-repeat}  .osl .wrc11, .vresult .r, .tl .r .wrc11{ display: none;}
+.wrc12 {display:none} .r .wrc12,  .fc .wrc12, #rhsline ol .wrc12 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_green.png") right no-repeat}  .osl .wrc12, .vresult .r, .tl .r .wrc12{ display: none;}
+.wrc13 {display:none} .r .wrc13,  .fc .wrc13, #rhsline ol .wrc13 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_green.png") right no-repeat}  .osl .wrc13, .vresult .r, .tl .r .wrc13{ display: none;}
+.wrc21 {display:none} .r .wrc21,  .fc .wrc21, #rhsline ol .wrc21 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_orange.png") right no-repeat}  .osl .wrc21, .vresult .r, .tl .r .wrc21{ display: none;}
+.wrc22 {display:none} .r .wrc22,  .fc .wrc22, #rhsline ol .wrc22 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_orange.png") right no-repeat}  .osl .wrc22, .vresult .r, .tl .r .wrc22{ display: none;}
+.wrc23 {display:none} .r .wrc23,  .fc .wrc23, #rhsline ol .wrc23 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_orange.png") right no-repeat}  .osl .wrc23, .vresult .r, .tl .r .wrc23{ display: none;}
+.wrc31 {display:none} .r .wrc31,  .fc .wrc31, #rhsline ol .wrc31 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_red.png") right no-repeat}  .osl .wrc31, .vresult .r, .tl .r .wrc31{ display: none;}
+.wrc32 {display:none} .r .wrc32,  .fc .wrc32, #rhsline ol .wrc32 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_red.png") right no-repeat}  .osl .wrc32, .vresult .r, .tl .r .wrc32{ display: none;}
+.wrc33 {display:none} .r .wrc33,  .fc .wrc33, #rhsline ol .wrc33 {display:inline; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_red.png") right no-repeat}  .osl .wrc33, .vresult .r, .tl .r .wrc33{ display: none;}
+.wrc_icon{margin:0;padding:0;padding:2px 0 0 10px !important; position: absolute; width:16px !important; height:16px !important;line-height:16px !important;}
+#wrchoverdiv{position:absolute; margin: 0 0 0 20px; display:none; font-family: Segoe UI, Arial Unicode MS, Arial, Sans-Serif; font-size: 14px; z-index:9999999;}
+#wrchoverdiv{cursor:default;}
+#wrchoverdiv #wrccontainer{width:130px; height:140px; border-radius: 6px; background-position: center 35% !important; background-repeat: no-repeat !important; box-shadow: 0 0 0 5px #fff; }
+#wrchoverdiv #wrcratingtext{color:#FFF; text-align:center; padding: 95px 5px 0 5px; font-size:15px; font-family: 'Source Sans Pro', sans-serif;}
+#wrchoverdiv .wrclogo{background:url(chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/logo_avastsmall.png);padding:0;margin:0;position:absolute;top:5px !important;right:5px !important;width:24px !important;height:24px !important;}
+</style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}</style></head>
+<body data-twttr-rendered="true" style="padding-top: 0px;"><iframe id="twttrHubFrameSecure" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" name="twttrHubFrameSecure" src="./Arduino Playground - Keypad Library_files/hub(1).htm" style="position: absolute; top: -9999em; width: 10px; height: 10px;"></iframe><iframe id="twttrHubFrame" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" name="twttrHubFrame" src="./Arduino Playground - Keypad Library_files/hub.htm" style="position: absolute; top: -9999em; width: 10px; height: 10px;"></iframe>
+	<div id="menuWings" class="fixed" style="display: none;"></div>
+	<div id="page">
+		
+<script>
+	var userAgent = (navigator.userAgent || navigator.vendor || window.opera).toLowerCase();
+	if(userAgent.indexOf('mac')>0){
+		$("head").append('<style type="text/css">@-moz-document url-prefix() {h1 a, h2 a, h3 a, h4 a, h5 a, h1 a:hover, h2 a:hover, th a, th a:hover, h3 a:hover, h4 a:hover, h5 a:hover, #wikitext h2 a:hover, #wikitext h3 a:hover, #wikitext h4 a:hover {padding-bottom: 0.5em!important;} #pageheader .search input{font-family: "TyponineSans Regular 18";} #pagefooter .monospace{margin-top: -4px;} #navWrapper ul.left &gt; li{margin-top: -2px; padding-bottom: 2px;}#navWrapper ul.right &gt; li{margin-top: -5px; padding-bottom: 5px;}#navWrapper ul.right &gt; li ul{margin-top: 4px;} .slider-container .fixed-caption p{padding:8px 0 14px 0}}</style>');
+	}
+</script>
+
+<!--[if IE]>
+<link rel='stylesheet' href='https://id.arduino.cc//css/ie-monospace.css' type='text/css' />
+<![endif]-->
+
+<div id="menuWings" class="fixed"></div>
+
+<!--[if IE 8]>
+<div class="alert-box panel ie8alert">
+  <p><strong>Arduino.cc offers limited compatibility for Internet Explorer 8. Get a modern browser as Chrome, Firefox or Safari.</strong></p>
+  <a href="" class="close">&times;</a>
+</div>
+<![endif]-->
+
+<div id="pageheader">
+	<div class="row">
+		<div class="small-6 large-8 eight columns">
+			<div class="title"><a href="http://arduino.cc/" wrc_done="true">Arduino</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></div>
+		</div>
+		<div class="small-6 large-4 four columns search">
+			<div class="row collapse">
+				<form method="GET" action="http://www.google.com/search">
+	<div class="small-12 twelve columns">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="hidden" name="oe" value="UTF-8">
+		<input type="text" name="q" size="25" maxlength="255" value="" placeholder="Search the Arduino Playground">
+		<input type="submit" name="btnG" value="search">
+		<input type="hidden" name="domains" value="http://playground.arduino.cc">
+		<input type="hidden" name="sitesearch" value="http://playground.arduino.cc">
+	</div>
+</form>			</div>
+		</div>
+	</div>
+
+	<!--[if gte IE 9]><!-->
+	<div id="navWrapper" class="sticky">
+	<!--[endif]---->
+	<!--[if IE 8]>
+		<div id="navWrapper">
+	<![endif]-->
+		<nav class="top-bar" data-options="is_hover:true">
+			<ul class="title-area">
+				<li class="name"></li>
+			</ul>
+
+			
+		<section class="top-bar-section">
+				<ul class="left">
+					<li id="navLogo" style="display: none;">
+						<a href="http://arduino.cc/" wrc_done="true">
+							<img src="./Arduino Playground - Keypad Library_files/logo_46.png" alt="userpicture">
+						</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+					</li>
+					<li id="navHome" style="display: block;"><a href="http://arduino.cc/" wrc_done="true">Home</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+					<li><a href="http://store.arduino.cc/" wrc_done="true">Buy</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+					<li><a href="http://arduino.cc/en/Main/Software" wrc_done="true">Download</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+					<li class="has-dropdown not-click"><a href="http://arduino.cc/en/Main/Products" wrc_done="true">Products</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+						<ul class="dropdown"><li class="title back js-generated"><h5><a href="http://playground.arduino.cc/code/Keypad#"><span class="backArrow">Back</span></a></h5></li><li><a class="parent-link js-generated" href="http://arduino.cc/en/Main/Products" wrc_done="true">Products</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+							<li><a href="http://arduino.cc/en/Main/Products" wrc_done="true">Arduino</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+							<li><a href="http://arduino.cc/en/ArduinoAtHeart/Products" wrc_done="true">AtHeart</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+							<li><a href="http://arduino.cc/en/ArduinoCertified/Products" wrc_done="true">Certified</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+						</ul>
+					</li>
+					<li class="has-dropdown active not-click"><a href="http://playground.arduino.cc/code/Keypad#">Learning</a>
+						<ul class="dropdown"><li class="title back js-generated"><h5><a href="http://playground.arduino.cc/code/Keypad#"><span class="backArrow">Back</span></a></h5></li>
+							<li><a href="http://arduino.cc/en/Guide/HomePage" wrc_done="true">Getting started</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+							<li><a href="http://arduino.cc/en/Tutorial/HomePage" wrc_done="true">Examples</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+							<li><a href="http://playground.arduino.cc/">Playground</a></li>
+						</ul>
+					</li>
+					<li><a href="http://arduino.cc/en/Reference/HomePage" wrc_done="true">Reference</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+					<li class="has-dropdown not-click"><a href="http://playground.arduino.cc/code/Keypad#">Support</a>
+						<ul class="dropdown"><li class="title back js-generated"><h5><a href="http://playground.arduino.cc/code/Keypad#"><span class="backArrow">Back</span></a></h5></li>
+							<li><a href="http://arduino.cc/en/Main/FAQ" wrc_done="true">FAQ</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+							<li><a href="http://forum.arduino.cc/" wrc_done="true">Forum</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+							<li><a href="http://arduino.cc/en/ContactUs" wrc_done="true">Contact Us</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+						</ul>
+					</li>
+					<li><a href="http://blog.arduino.cc/" wrc_done="true">Blog</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+				</ul>
+
+								<ul class="right">
+					<li><a href="https://id.arduino.cc/auth/login/?returnurl=http%3A%2F%2Fplayground.arduino.cc%2Fcode%2FKeypad" class="cart">LOG IN</a></li>
+					<li><a href="https://id.arduino.cc/auth/signup" class="cart" wrc_done="true">SIGN UP</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+				</ul>
+							</section></nav>
+	</div>
+</div>
+
+
+
+		<br class="clear">
+
+		<!--PageLeftFmt-->
+		<div id="pagenav">
+			<p><em>The <a class="wikilink" href="http://playground.arduino.cc/Main/HomePage">playground</a> is a publicly-editable wiki about <a class="urllink" href="http://www.arduino.cc/" rel="nofollow" wrc_done="true">Arduino</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>.</em>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="wikilink" href="http://playground.arduino.cc/Main/ManualsAndCurriculum">Manuals and Curriculum</a>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="urllink" href="http://arduino.stackexchange.com/" rel="nofollow" wrc_done="true">Arduino StackExchange</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="wikilink" href="http://playground.arduino.cc/Main/ArduinoCoreHardware">Board Setup and Configuration</a>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="wikilink" href="http://playground.arduino.cc/Main/DevelopmentTools">Development Tools</a>
+</p>
+<p class="vspace"></p><p class="sidehead"> <a class="wikilink" href="http://playground.arduino.cc/Main/ArduinoOnOtherAtmelChips">Arduino on other Atmel Chips</a>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="wikilink" href="http://playground.arduino.cc/Main/InterfacingWithHardware">Interfacing With Hardware</a>
+</p><ul><li><a class="wikilink" href="http://playground.arduino.cc/Main/InterfacingWithHardware#Output">Output</a>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Main/InterfacingWithHardware#InputTOC">Input</a>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Main/InterfacingWithHardware#ui">User Interface</a>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Main/InterfacingWithHardware#Storage">Storage</a>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Main/InterfacingWithHardware#Communication">Communication</a> 
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Main/IntWithHW-PwrSup">Power supplies</a> 
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Main/InterfacingWithHardware#General">General</a> 
+</li></ul><p class="vspace"></p><p class="sidehead"><a class="wikilink" href="http://playground.arduino.cc/Main/InterfacingWithSoftware">Interfacing with Software</a>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="wikilink" href="http://playground.arduino.cc/Main/GeneralCodeLibrary">User Code Library</a>
+</p><ul><li><a class="wikilink" href="http://playground.arduino.cc/Main/SketchList">Snippets and Sketches</a>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Main/LibraryList">Libraries</a>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Main/TutorialList">Tutorials</a>
+</li></ul><p class="vspace"></p><p class="sidehead"><a class="urllink" href="http://code.google.com/p/arduino/issues/list" rel="nofollow" wrc_done="true">Suggestions &amp; Bugs</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="wikilink" href="http://playground.arduino.cc/Main/ElectroInfoResources">Electronics Technique</a>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="wikilink" href="http://playground.arduino.cc/Main/Resources">Sources for Electronic Parts</a>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="wikilink" href="http://playground.arduino.cc/Main/SimilarBoards">Related Hardware and Initiatives</a>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="urllink" href="http://playground.arduino.cc/Main/People" rel="nofollow">Arduino People/Groups &amp; Sites</a>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="urllink" href="http://playground.arduino.cc/Projects/ArduinoUsers" rel="nofollow">Exhibition</a>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="urllink" href="http://playground.arduino.cc/Projects/Ideas" rel="nofollow">Project Ideas</a>
+</p>
+<p class="vspace"></p><p class="sidehead"><a class="wikilink" href="http://playground.arduino.cc/Main/Languages">Languages</a>
+</p>
+<p class="vspace"></p><hr>
+<p class="vspace"></p><p class="sidehead"> <a class="wikilink" href="http://playground.arduino.cc/Main/Participate">PARTICIPATE</a>
+</p><ul><li><a class="urllink" href="http://code.google.com/p/arduino/issues/list" rel="nofollow" wrc_done="true">Suggestions</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Main/Participate#contribrules">Formatting guidelines</a>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Site/AllRecentChanges">All recent changes</a>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/PmWiki/PmWiki">PmWiki</a>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/Main/WikiSandbox">WikiSandBox training</a>
+</li><li><a class="wikilink" href="http://playground.arduino.cc/PmWiki/BasicEditing">Basic Editing</a>
+</li><li><a class="urllink" href="http://www.pmwiki.org/wiki/Cookbook/CookbookBasics" rel="nofollow" wrc_done="true">Cookbook (addons)</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+</li><li><a class="urllink" href="http://www.pmwiki.org/wiki/PmWiki/DocumentationIndex" rel="nofollow" wrc_done="true">Documentation index</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+<p class="vspace"></p></li><li><a class="urllink" href="http://www.bartoloilliano.com/arduino-tutorial-costruire-un-drone-con-webcam-telecomandato-da-pc-tramite-csharp.html" rel="nofollow" wrc_done="true">Drone with Arduino</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+<p class="vspace"></p></li><li><a class="urllink" href="http://arduinothermostat.blogspot.co.uk/" rel="nofollow" wrc_done="true">Thermostat with Arduino</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+</li></ul><p class="vspace"></p>
+
+		</div>
+		<!--/PageLeftFmt-->
+
+		
+
+		<div id="pagetext" class="playground">
+				<!--PageText-->
+<div id="wikitext">
+<p class="vspace"></p><p>
+</p><pre style="background-color: #eeeeee; color: #000000; border: 1px dotted black; font-size: 6pt; padding: 2px;">Keypad Library for Arduino
+
+Authors:  Mark Stanley, Alexander Brevig
+Contact: mstanley@technologist.com
+Contact: alexanderbrevig@gmail.com
+</pre>
+<p class="vspace"></p><p>
+</p><pre style="background-color: #ffcccc; color: #000000; border: 1px dotted black; font-size: 6pt; padding: 2px;">I am Alexander, the lead developer for libraries 
+that ship with the Wiring distribution. I will be
+maintaining my libraries here:
+http://wiring.uniandes.edu.co/source/trunk/wiring/
+
+As of version 1.0 - Wiring supports Arduino boards.
+You are welcome to check it out! Please visit
+http://wiring.org.co/download/
+</pre>
+<p class="vspace"></p><hr>
+<h1>Navigation</h1>
+<ul><li><a href="http://playground.arduino.cc/code/Keypad#CurrentVersion">Current version</a>
+</li><li><a href="http://playground.arduino.cc/code/Keypad#History">History</a>
+</li><li><a href="http://playground.arduino.cc/code/Keypad#Description">Description</a>
+</li><li><a href="http://playground.arduino.cc/code/Keypad#Download">Download, install and import</a>
+</li><li><a href="http://playground.arduino.cc/code/Keypad#Creation">Creation</a>
+</li><li><a href="http://playground.arduino.cc/code/Keypad#Functions">Functions</a>
+</li><li><a href="http://playground.arduino.cc/code/Keypad#Example">Example</a>
+</li><li><a href="http://playground.arduino.cc/code/Keypad#FAQ">FAQ</a>
+</li><li><a href="http://playground.arduino.cc/code/Keypad#Information">Information about this page</a>
+</li></ul><p class="vspace"></p><hr>
+<h1><a name="CurrentVersion" id="CurrentVersion"></a>Current version</h1>
+<p>3.0 2012-07-12 - Mark Stanley : Made library multi-keypress by default. (Backwards compatible) <br>
+</p><hr>
+<h1><a name="History" id="History"></a>History</h1>
+<p>3.0 2012-07-12 - Mark Stanley : Modified pin functions to support Keypad_I2C <br>3.0 2012-07-12 - Stanley &amp; Young : Fix for multiple keypad objects. <br>3.0 2012-07-12 - Mark Stanley : Fixed bug that caused shorted pins. <br>2.0 2011-12-29 - Mark Stanley : Added <a class="urllink" href="http://arduino.cc/forum/index.php?topic=58337.0" rel="nofollow" wrc_done="true">Nick Gammon's changes.</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span> <br>2.0 2011-12-29 - Mark Stanley : Added waitForKey() <br>2.0 2011-12-23 - Mark Stanley : Rewrote state machine.<br>2.0 2011-12-23 - Mark Stanley : Significant speed improvements.<br>1.8 2011-11-29 - Tom Putzeys : Enabled internal pull-ups on non-active columns<br>1.8 2011-11-21 - Mark Stanley     : Added test for version 1.0 of the IDE <br>1.8 2009-07-08 - Alexander Brevig : Added no restrictions on sizes or keymaps<br>1.8 2009-07-08 - Alexander Brevig : Added no restrictions on sizes or keymaps<br>See source files for a complete change history.
+</p><hr>
+<h1><a name="Description" id="Description"></a>Description</h1>
+<div style="text-align: center;"><img src="./Arduino Playground - Keypad Library_files/16buttonkeypad.jpg" alt="" title=""></div>
+<p class="vspace"></p><p><strong>Keypad</strong> is a library for using <em>matrix</em> style keypads with the Arduino. As of version 3.0 it now supports mulitple keypresses.
+</p>
+<p class="vspace"></p><p>This library is based upon the <a class="wikilink" href="http://playground.arduino.cc/Main/KeypadTutorial">Keypad Tutorial</a>.
+</p>
+<p class="vspace"></p><p>It was created to promote Hardware Abstraction. It improves readability of the code by hiding the pinMode and digitalRead calls for the user.
+</p>
+<p class="vspace"></p><p><strong>Keypad</strong> library is part of the <a class="wikilink" href="http://playground.arduino.cc/Code/HardwareAbstraction">Hardware Abstraction</a> libraries. <br><br>
+Version 3.0 has just been posted (19 July 2012) and was rewritten to support multi-keypresses by default. But for those who still need the original single-keypress functionality, the library is fully backwards compatible.
+</p>
+<p class="vspace"></p><p>You won't need external resistors or diodes because the library uses the internal pullup resistors and additonally ensures that all unused column pins are high-impedance.
+</p>
+<p class="vspace"></p><p>Support was added to allow other hardware to be used along with a keypad.  <em>Joe Young's keypad library added support for several <span class="wikiword">I2C</span> expander chips.</em> You can find it here: <a class="urllink" href="https://github.com/joeyoung/arduino_keypads" rel="nofollow" wrc_done="true">https://github.com/joeyoung/arduino_keypads</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+</p>
+<p class="vspace"></p><hr>
+<h1><a name="Download" id="Download"></a>Download, install and import</h1>
+<p>Download here: <a class="urllink" href="http://playground.arduino.cc/uploads/Code/keypad.zip" rel="nofollow">keypad.zip</a>
+</p>
+<p class="vspace"></p><p>Put the Keypad folder in "<em>arduino</em>\libraries\".<br>In the Arduino IDE, create a new sketch (or open one) and select from the menubar "Sketch -&gt; Import Library -&gt; Keypad".<br>Once the library is imported, an "#include &lt;Keypad.h&gt;" line will appear at the top of your Sketch.
+</p>
+<p class="vspace"></p><hr>
+<h1><a name="Creation" id="Creation"></a>Creation</h1>
+<p>Constructors:
+</p><ol><li>Keypad(makeKeymap(userKeymap), row[], col[], rows, cols)
+</li></ol><p class="vspace"></p><pre style="background-color: #dddddd; border: 2px dotted white;">const byte rows = 4; //four rows
+const byte cols = 3; //three columns
+char keys[rows][cols] = {
+  {'1','2','3'},
+  {'4','5','6'},
+  {'7','8','9'},
+  {'#','0','*'}
+};
+byte rowPins[rows] = {5, 4, 3, 2}; //connect to the row pinouts of the keypad
+byte colPins[cols] = {8, 7, 6}; //connect to the column pinouts of the keypad
+Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, rows, cols );
+</pre>
+<p class="vspace"></p><p>Instantiates a Keypad object that uses pins 5, 4, 3, 2 as row pins, and 8, 7, 6 as column pins.<br>This keypad has 4 rows and 3 columns, resulting in 12 keys.
+</p>
+<p class="vspace"></p><hr>
+<h1><a name="Functions" id="Functions"></a>Functions</h1>
+<h2>void begin(makeKeymap(userKeymap))</h2>
+<p>Initializes the internal keymap to be equal to userKeymap<br>[See File -&gt; Examples -&gt; Keypad -&gt; Examples -&gt; <span class="wikiword">CustomKeypad</span>]<br>
+</p><h2>char waitForKey()</h2>
+<p>This function will wait forever until someone presses a key. <strong>Warning:</strong> It blocks all other code until a key is pressed. That means no blinking LED's, no LCD screen updates, no nothing with the exception of interrupt routines. 
+</p>
+<p class="vspace"></p><h2>char getKey()</h2>
+<p>Returns the key that is pressed, if any. This function is non-blocking.
+</p>
+<p class="vspace"></p><h2><span class="wikiword">KeyState</span> getState()</h2>
+<p>Returns the current state of any of the keys.<br>The four states are IDLE, PRESSED, RELEASED and HOLD.
+</p>
+<p class="vspace"></p><h2>boolean keyStateChanged()</h2>
+<p>New in version 2.0:  Let's you know when the key has changed from one state to another. For example, instead of just testing for a valid key you can test for when a key was pressed.
+</p>
+<p class="vspace"></p><h2>setHoldTime(unsigned int time)</h2>
+<p>Set the amount of milliseconds the user will have to hold a button until the HOLD state is triggered.
+</p>
+<p class="vspace"></p><h2>setDebounceTime(unsigned int time)</h2>
+<p>Set the amount of milliseconds the keypad will wait until it accepts a new keypress/keyEvent. This is the "time delay" debounce method.
+</p>
+<p class="vspace"></p><h2>addEventListener(keypadEvent)</h2>
+<p>Trigger an event if the keypad is used.  You can load an example in the Arduino IDE.<br>[See File -&gt; Examples -&gt; Keypad -&gt; Examples -&gt; <span class="wikiword">EventSerialKeypad</span>] or see the <a class="wikilink" href="http://playground.arduino.cc/KeypadTutorial/EventKeypad">KeypadEvent Example</a> code.<br>
+</p><h2>For Now</h2>
+<p>Here's the list of multi-keypress functions and the keylist definition. I will complete their descriptions this weekend.
+</p>
+<p class="vspace"></p><ul><li>Key key[LIST_MAX]
+</li><li>bool getKeys()
+</li><li>bool isPressed(char keyChar)
+</li><li>int findInList(char keyChar)
+</li></ul><p class="vspace"></p><hr>
+<h1><a name="Example" id="Example"></a>Example</h1>
+<p>
+</p><div class="sourceblock " id="sourceblock1">
+  <div class="sourceblocktext"><div class="c"><span class="co2">#include &lt;Keypad.h&gt;</span><br>
+<br>
+<span class="kw4">const</span> byte ROWS <span class="sy0">=</span> <span class="nu0">4</span><span class="sy0">;</span> <span class="co1">//four rows</span><br>
+<span class="kw4">const</span> byte COLS <span class="sy0">=</span> <span class="nu0">3</span><span class="sy0">;</span> <span class="co1">//three columns</span><br>
+<span class="kw4">char</span> keys<span class="br0">[</span>ROWS<span class="br0">]</span><span class="br0">[</span>COLS<span class="br0">]</span> <span class="sy0">=</span> <span class="br0">{</span><br>
+&nbsp; <span class="br0">{</span><span class="st0">'1'</span><span class="sy0">,</span><span class="st0">'2'</span><span class="sy0">,</span><span class="st0">'3'</span><span class="br0">}</span><span class="sy0">,</span><br>
+&nbsp; <span class="br0">{</span><span class="st0">'4'</span><span class="sy0">,</span><span class="st0">'5'</span><span class="sy0">,</span><span class="st0">'6'</span><span class="br0">}</span><span class="sy0">,</span><br>
+&nbsp; <span class="br0">{</span><span class="st0">'7'</span><span class="sy0">,</span><span class="st0">'8'</span><span class="sy0">,</span><span class="st0">'9'</span><span class="br0">}</span><span class="sy0">,</span><br>
+&nbsp; <span class="br0">{</span><span class="st0">'#'</span><span class="sy0">,</span><span class="st0">'0'</span><span class="sy0">,</span><span class="st0">'*'</span><span class="br0">}</span><br>
+<span class="br0">}</span><span class="sy0">;</span><br>
+byte rowPins<span class="br0">[</span>ROWS<span class="br0">]</span> <span class="sy0">=</span> <span class="br0">{</span><span class="nu0">5</span><span class="sy0">,</span> <span class="nu0">4</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">}</span><span class="sy0">;</span> <span class="co1">//connect to the row pinouts of the keypad</span><br>
+byte colPins<span class="br0">[</span>COLS<span class="br0">]</span> <span class="sy0">=</span> <span class="br0">{</span><span class="nu0">8</span><span class="sy0">,</span> <span class="nu0">7</span><span class="sy0">,</span> <span class="nu0">6</span><span class="br0">}</span><span class="sy0">;</span> <span class="co1">//connect to the column pinouts of the keypad</span><br>
+<br>
+Keypad keypad <span class="sy0">=</span> Keypad<span class="br0">(</span> makeKeymap<span class="br0">(</span>keys<span class="br0">)</span><span class="sy0">,</span> rowPins<span class="sy0">,</span> colPins<span class="sy0">,</span> ROWS<span class="sy0">,</span> COLS <span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+<span class="kw4">void</span> setup<span class="br0">(</span><span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; Serial.<span class="me1">begin</span><span class="br0">(</span><span class="nu0">9600</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<br>
+<span class="kw4">void</span> loop<span class="br0">(</span><span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; <span class="kw4">char</span> key <span class="sy0">=</span> keypad.<span class="me1">getKey</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+&nbsp; <span class="kw1">if</span> <span class="br0">(</span>key <span class="sy0">!=</span> NO_KEY<span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; Serial.<span class="me1">println</span><span class="br0">(</span>key<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; <span class="br0">}</span><br>
+<span class="br0">}</span></div></div>
+  <div class="sourceblocklink"><a href="http://playground.arduino.cc/Code/Keypad?action=sourceblock&num=1" type="text/plain">[Get Code]</a></div>
+</div>
+
+<p></p>
+<p class="vspace"></p><hr>
+<h1><a name="FAQ" id="FAQ"></a>FAQ</h1>
+<ul style="background-color: #dddddd; border: 2px dotted white;"><li style="background-color: #dddddd; border: 2px dotted white;"><strong><code>How do I use multiple Keypads?</code></strong>
+</li></ul><p class="vspace"></p><p>Keypad is a class. Therefore to use multiple Keypad, you must create an instance for each of them. 
+In the example above, the Keypad instance <em>keypad</em>) was bound to the digital pins 2, 3, 4, 5, 6, 7 and 8.
+</p>
+<p class="vspace"></p><p>To add a Keypad bound to digital pins 9, 10, 11, 12, 13, 14, 15 and  16, you could create the following instance <em>keypad2</em>:
+</p>
+<p class="vspace"></p><pre style="background-color: #dddddd; border: 2px dotted white;">const byte ROWS2 = 4; //four rows
+const byte COLS2 = 4; //four columns
+char keys2[ROWS2][COLS2] = {
+  {'.','a','d','1'},
+  {'g','j','m','2'},
+  {'p','t','w','3'},
+  {'*',' ','#','4'}
+};
+byte rowPins2[ROWS2] = {12, 11, 10, 9}; //connect to the row pinouts of the keypad
+byte colPins2[COLS2] = {16, 15, 14, 13}; //connect to the column pinouts of the keypad
+
+Keypad keypad2 = Keypad( makeKeymap(keys2), rowPins2, colPins2, ROWS2, COLS2 );
+</pre>
+<p class="vspace"></p><p>And now it's just a matter of using whatever function is wanted on each keypad:
+</p><pre style="background-color: #dddddd; border: 2px dotted white;">//update instances and possibly fire funcitons
+void loop(){
+  char key1 = keypad.getKey();
+  char key2 = keypad2.getKey();
+
+  if (key1 != NO_KEY || key2 != NO_KEY){
+    Serial.print("You pressed: ");
+    Serial.print(key1 != NO_KEY ? key1 : "nothing on keypad");
+	Serial.print(" and ");
+    Serial.print(key2 != NO_KEY ? key2 : "nothing on keypad2");
+    Serial.println(".");
+  }
+}
+</pre><br>
+<ul style="background-color: #dddddd; border: 2px dotted white;"><li style="background-color: #dddddd; border: 2px dotted white;"><strong><code>How do I use setDebounceTime(unsigned int time)?</code></strong>
+</li></ul><p class="vspace"></p><p>In Arduino follow the main menu from File-&gt; Examples-&gt; Keypad-&gt; Examples-&gt; <span class="wikiword">DynamicKeypad</span>. Once the sketch is open find setup() and there you will see:
+</p>
+<p class="vspace"></p><pre style="background-color: #dddddd; border: 2px dotted white;">void setup()  {
+  Serial.begin(9600);
+  digitalWrite(ledPin, HIGH);            // Turns the LED on.
+  keypad.addEventListener(keypadEvent);  // Add an event listener.
+  keypad.setHoldTime(500);               // Default is 1000mS
+  keypad.setDebounceTime(250);           // Default is 50mS
+}
+</pre>
+<p class="vspace"></p><p>This shows that the debounce time will allow one key press every 250 milliseconds.  If multiple key presses occur within that time frame (as would happen when a key is bouncing) then those extra presses are simply ignored.
+</p>
+<p class="vspace"></p><hr>
+<h1><a name="Information" id="Information"></a>Information about this page</h1>
+<table border="0" cellpadding="5" cellspacing="0"><tbody><tr><td colspan="2" valign="top">Part of <a class="wikilink" href="http://playground.arduino.cc/Profiles/AlphaBeta">AlphaBeta</a> Libraries.
+</td></tr><tr><td valign="top"> Last Modified: 
+</td><td valign="top"> March 22, 2014, at 11:53 PM
+</td></tr><tr><td valign="top"> By:
+</td><td valign="top"> mstanley
+</td></tr></tbody></table>
+</div>
+
+
+				<!-- AddThis Button Style BEGIN -->
+<style>
+  .addthis_toolbox {
+    margin: 2em 0 1em;
+  }
+  .addthis_toolbox img {
+    float: left;
+    height: 25px;
+    margin-right: 10px;
+    width: auto;
+  }
+  .addthis_toolbox .social-container {
+    float: left;
+    height: 27px; 
+    width: auto; 
+  }
+  .addthis_toolbox .social-container .social-content {
+    float: left;
+    margin-top: 2px;
+    max-width: 0;
+    overflow: hidden;
+    -moz-transition: max-width .3s ease-out;
+    -webkit-transition: max-width .3s ease-out;
+    -o-transition: max-width .3s ease-out;
+    transition: max-width .3s ease-out;
+  }
+  .addthis_toolbox .social-container:hover .social-content {
+    max-width: 100px;
+    -moz-transition: max-width .2s ease-in;
+    -webkit-transition: max-width .2s ease-in;
+    -o-transition: max-width .2s ease-in;
+    transition: max-width .2s ease-in;
+  }
+  .addthis_toolbox .social-container .social-content a {
+    float: left;
+    margin-right: 5px;
+  }
+
+  .addthis_toolbox h3 {
+    font-size: 24px;
+    text-align: left;
+  }
+</style>
+<!-- AddThis Button Style END -->
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style">
+  <h3>Share</h3>
+  <!-- FACEBOOK -->
+  <div class="social-container">
+    <img src="./Arduino Playground - Keypad Library_files/facebook.png">
+    <div class="social-content">
+      <a class="addthis_button_facebook_like at300b" fb:like:layout="button_count"><div class="fb-like fb_iframe_widget" data-ref=".VBnHNW_f60U.like" data-layout="button_count" data-show_faces="false" data-action="like" data-width="90" data-font="arial" data-href="http://playground.arduino.cc/code/Keypad" data-send="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=172525162793917&amp;font=arial&amp;href=http%3A%2F%2Fplayground.arduino.cc%2Fcode%2FKeypad&amp;layout=button_count&amp;locale=en_US&amp;ref=.VBnHNW_f60U.like&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90"><span style="vertical-align: bottom; width: 78px; height: 20px;"><iframe name="f2c0be0e8c" width="90px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Arduino Playground - Keypad Library_files/like.htm" style="border: none; visibility: visible; width: 78px; height: 20px;" class=""></iframe></span></div></a>
+    </div>
+  </div>
+  <!-- TWITTER -->
+  <div class="social-container">
+    <img src="./Arduino Playground - Keypad Library_files/twitter.png">
+    <div class="social-content">
+      <a class="addthis_button_tweet at300b"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Arduino Playground - Keypad Library_files/tweet_button.1410542722.htm" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 110px; height: 20px;"></iframe>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></a>
+    </div>
+  </div>
+  <!-- PINTEREST -->
+  <div class="social-container">
+    <img src="./Arduino Playground - Keypad Library_files/pinterest.png">
+    <div class="social-content">
+      <a class="addthis_button_pinterest_pinit at300b" pi:pinit:url="http://www.addthis.com/features/pinterest" pi:pinit:media="http://www.addthis.com/cms-content/images/features/pinterest-lg.png"><iframe frameborder="0" role="presentation" scrolling="no" allowtransparency="true" scrollbars="no" style="width:40px; height:25px;" src="./Arduino Playground - Keypad Library_files/pinit022.htm"></iframe></a>
+    </div>
+  </div>
+  <!-- G+ -->
+  <div class="social-container">
+    <img src="./Arduino Playground - Keypad Library_files/gplus.png">
+    <div class="social-content">
+      <a class="addthis_button_google_plusone at300b" g:plusone:size="medium"><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1410975554246" name="I0_1410975554246" src="./Arduino Playground - Keypad Library_files/fastbutton.htm" data-gapiattached="true" title="+1"></iframe></div></a>
+    </div>
+  </div>
+
+  <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+  <script type="text/javascript" src="./Arduino Playground - Keypad Library_files/addthis_widget.js"></script><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe id="_atssh251" title="AddThis utility frame" src="./Arduino Playground - Keypad Library_files/sh172.htm" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px; left: 0px; top: 0px;"></iframe></div><script type="text/javascript" src="./Arduino Playground - Keypad Library_files/core155.js"></script>
+<div class="atclear"></div></div>
+<!-- AddThis Button END -->
+
+			</div> <!-- eof pagetext -->
+			
+	</div> <!-- eof page -->
+		
+	<!--PageFooterFmt-->
+	<div id="pagefooter">
+		<div id="pagefooter" class="pagefooter">
+  <div class="row">
+    <div class="large-8 eight columns">
+      <div class="large-4 four columns newsletter-box">
+        <!-- Begin MailChimp Signup Form -->
+        <h6>Newsletter</h6>
+        <form action="http://arduino.us5.list-manage.com/subscribe/post?u=0140d17584d1c002bcd94d0e8&id=69a7d1abe4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+          <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your email to sign up" required="">
+          <i class="icon-right-small"></i>
+          <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="newsletter-button">
+        </form>
+        <!--End mc_embed_signup-->
+      </div>
+      <div class="clearfix"></div>
+      <ul class="inline-list">
+        <li class="monospace">©2014 Arduino</li>
+        <li><a href="http://arduino.cc/en/Main/CopyrightNotice" wrc_done="true">Copyright Notice</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+        <li><a href="http://arduino.cc/en/Main/ContactUs" wrc_done="true">Contact us</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span></li>
+      </ul>
+    </div>
+    <div class="large-4 four columns">
+      <ul id="arduinoSocialLinks" class="arduino-social-links">
+        <li>
+          <a href="https://twitter.com/arduino" wrc_done="true">
+            <img src="./Arduino Playground - Keypad Library_files/twitter(1).png">
+          </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+        </li>
+        <li>
+          <a href="http://www.facebook.com/official.arduino" wrc_done="true">
+            <img src="./Arduino Playground - Keypad Library_files/facebook(1).png">
+          </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+        </li>
+        <li>
+          <a href="https://plus.google.com/+Arduino" wrc_done="true">
+            <img src="./Arduino Playground - Keypad Library_files/gplus(1).png">
+          </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/arduino_cc" wrc_done="true">
+            <img src="./Arduino Playground - Keypad Library_files/flickr.png">
+          </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+        </li>
+        <li>
+          <a href="http://youtube.com/arduinoteam" wrc_done="true">
+            <img src="./Arduino Playground - Keypad Library_files/youtube.png">
+          </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1410975552873}"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+	</div>
+	<!--/PageFooterFmt-->
+	
+		
+	<script src="./Arduino Playground - Keypad Library_files/jquery-1.10.2.min.js"></script>
+	<!--[if gte IE 9]><!-->
+	<script src="./Arduino Playground - Keypad Library_files/foundation.min.js"></script>
+	<script src="./Arduino Playground - Keypad Library_files/foundation.topbar.custom.js"></script>
+	<script>
+	  $(document).foundation();
+	</script>
+	<!--<![endif]-->
+	<!--[if IE 8]>
+	<script src="http://arduino.cc/js/foundation_ie8.min.js"></script>
+	<script src="http://arduino.cc/js/ie8/jquery.foundation.alerts.js"></script>
+	<script src="http://arduino.cc/js/app.js"></script>
+	<![endif]-->
+	
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-22581631-3']);
+	  _gaq.push(['_setDomainName', 'arduino.cc']);
+	  _gaq.push(['_trackPageview']);
+	
+	    (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+
+
+
+<div id="wrchoverdiv"><div id="wrccontainer" style="background: #a5abb2 url(chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_norating.png)"><div id="wrcratingtext">This site has no rating</div><div class="wrclogo"></div></div></div><div id="fb-root" class=" fb_reset"><script src="./Arduino Playground - Keypad Library_files/all.js" async=""></script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="f143b5f4c" frameborder="0" allowtransparency="true" scrolling="no" src="./Arduino Playground - Keypad Library_files/ping.htm" style="display: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Arduino Playground - Keypad Library_files/ZEbdHPQfV3x.htm" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Arduino Playground - Keypad Library_files/ZEbdHPQfV3x(1).htm" style="border: none;"></iframe></div></div></div><iframe name="oauth2relay637354498" id="oauth2relay637354498" src="./Arduino Playground - Keypad Library_files/postmessageRelay.htm" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>
